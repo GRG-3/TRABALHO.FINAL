@@ -98,9 +98,9 @@ void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
         {"O Pequeno Príncipe, de Antoine de Saint-Exupéry", 7},
         {"Harry Potter (série), de J.K. Rowling", 4},
         {"Cinderela, Branca de Neve, e outros contos de fadas", 6},
-        {"Ela, a Feiticeira ", 1},
-        {"O Livro dos Recordes (Guinness World Records) ", 9},
-        {"Um Conto de Duas Cidades ", 10}
+        {"Ela, a Feiticeira", 1},
+        {"O Livro dos Recordes (Guinness World Records)", 9},
+        {"Um Conto de Duas Cidades", 10}
 };
      int escolha;
     printf("Escolha o numero do Livro a ser emprestado: ");
