@@ -97,7 +97,7 @@ void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
         {"A Arte da Guerra, de Sun Tzu", 2},
         {"O Pequeno Príncipe, de Antoine de Saint-Exupéry", 7},
         {"Harry Potter (série), de J.K. Rowling", 4},
-        {"Cinderela, Branca de Neve, e outros contos de fadas ", 6},
+        {"Cinderela, Branca de Neve, e outros contos de fadas", 6},
         {"Livro8", 1},
         {"Livro9", 9},
         {"Livro10", 10}
