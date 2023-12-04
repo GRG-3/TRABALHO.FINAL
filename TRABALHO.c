@@ -45,7 +45,7 @@ void buscarLivro(struct Livro lista[], int quantidadeLivros) {
         }
     }
 
-    printf("Livro nao encontrado.\n");
+    printf("Livro não encontrado.\n");
 }
 
 void editarLivro(struct Livro lista[], int quantidadeLivros) {
@@ -85,7 +85,7 @@ void removerLivro(struct Livro lista[], int *quantidadeLivros) {
         }
     }
 
-    printf("Livro nao encontrado.\n");
+    printf("Livro não encontrado.\n");
 }
 
 void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
@@ -123,13 +123,13 @@ void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
                 LivrosDisponiveis[indexLivro].quantidade -= quantidadeDesejada;
                 printf("%d unidades do Livro '%s' emprestadas com sucesso.\n", quantidadeDesejada, LivrosDisponiveis[indexLivro].nome);
             } else {
-                printf("nao ha quantidade suficiente disponível para emprestimo do Livro '%s'.\n", LivrosDisponiveis[indexLivro].nome);
+                printf("Não à quantidade suficiente disponível para emprestimo do Livro '%s'.\n", LivrosDisponiveis[indexLivro].nome);
             }
         } else {
-            printf("nao ha copias disponiveis para emprestimo do Livro '%s'.\n", LivrosDisponiveis[indexLivro].nome);
+            printf("Não à copias disponiveis para emprestimo do Livro '%s'.\n", LivrosDisponiveis[indexLivro].nome);
         }
     } else {
-        printf("opcao invalida .\n");
+        printf("Opção invalida .\n");
     }
 }
 
@@ -155,7 +155,7 @@ struct Livro* inicializarCatalogo(int *quantidadeLivros) {
 
     struct Livro *lista = (struct Livro*)malloc((*quantidadeLivros) * sizeof(struct Livro));
     if (lista == NULL) {
-        printf("Erro ao alocar memoria.\n");
+        printf("Erro ao alocar memória.\n");
         exit(1);
     }
 
@@ -212,7 +212,7 @@ int main() {
                 printf("Saindo do programa.\n");
                 break;
             default:
-                printf("opcao invalida . Tente novamente.\n");
+                printf("Opção invalida . Tente novamente.\n");
         }
 
     } while (opcao != 0);
