@@ -94,7 +94,7 @@ void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
         {"Arsène Lupin, Ladrão de Casaca", 5},
         {"Dom Quixote, de Miguel de Cervantes", 8},
         {"It", 3},
-        {"A Arte da Guerra, de Sun Tzu", 2},
+        {"Diário de um Banana", 2},
         {"O Pequeno Príncipe, de Antoine de Saint-Exupéry", 7},
         {"Harry Potter (série), de J.K. Rowling", 4},
         {"Cinderela, Branca de Neve, e outros contos de fadas", 6},
