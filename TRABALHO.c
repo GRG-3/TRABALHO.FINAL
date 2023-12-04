@@ -93,7 +93,7 @@ void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
     struct Livro LivrosDisponiveis[10] = {
         {"Arsène Lupin, Ladrão de Casaca", 5},
         {"Dom Quixote, de Miguel de Cervantes", 8},
-        {"O Alcorão", 3},
+        {"It", 3},
         {"A Arte da Guerra, de Sun Tzu", 2},
         {"O Pequeno Príncipe, de Antoine de Saint-Exupéry", 7},
         {"Harry Potter (série), de J.K. Rowling", 4},
