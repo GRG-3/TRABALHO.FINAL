@@ -108,7 +108,7 @@ void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
         printf("%d. %s (Quantidade Disponível: %d)\n", i + 1, LivrosDisponiveis[i].nome, LivrosDisponiveis[i].quantidade);
     }
 
-    int escolha;
+     int escolha;
     printf("Escolha o numero do Livro a ser emprestado: ");
     scanf("%d", &escolha);
 
