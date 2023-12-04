@@ -45,7 +45,7 @@ void buscarLivro(struct Livro lista[], int quantidadeLivros) {
         }
     }
 
-    printf("Livro não encontrado.\n");
+    printf("Livro nao encontrado.\n");
 }
 
 void editarLivro(struct Livro lista[], int quantidadeLivros) {
