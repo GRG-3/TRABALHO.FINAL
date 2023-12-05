@@ -45,7 +45,7 @@ void buscarLivro(struct Livro lista[], int quantidadeLivros) {
         }
     }
 
-    printf("Livro não encontrado.\n");
+    printf("Livro nao encontrado.\n");
 }
 
 void editarLivro(struct Livro lista[], int quantidadeLivros) {
@@ -85,17 +85,17 @@ void removerLivro(struct Livro lista[], int *quantidadeLivros) {
         }
     }
 
-    printf("Livro não encontrado.\n");
+    printf("Livro nao encontrado.\n");
 }
 
 void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
 
     struct Livro LivrosDisponiveis[10] = {
-        {"Arsène Lupin, Ladrão de Casaca", 5},
+        {"Arsene Lupin, Ladrao de Casaca", 5},
         {"Dom Quixote, de Miguel de Cervantes", 8},
         {"It", 3},
         {"Diário de um Banana", 2},
-        {"O Pequeno Príncipe, de Antoine de Saint-Exupéry", 7},
+        {"O Pequeno Príncipe, de Antoine de Saint-Exupery", 7},
         {"Harry Potter (série), de J.K. Rowling", 4},
         {"Cinderela, Branca de Neve, e outros contos de fadas", 6},
         {"Ela, a Feiticeira", 1},
@@ -117,13 +117,13 @@ void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
                 LivrosDisponiveis[indexLivro].quantidade -= quantidadeDesejada;
                 printf("%d unidades do Livro '%s' emprestadas com sucesso.\n", quantidadeDesejada, LivrosDisponiveis[indexLivro].nome);
             } else {
-                printf("Não à quantidade suficiente disponível para emprestimo do Livro '%s'.\n", LivrosDisponiveis[indexLivro].nome);
+                printf("Nao a quantidade suficiente disponivel para emprestimo do Livro '%s'.\n", LivrosDisponiveis[indexLivro].nome);
             }
         } else {
-            printf("Não à copias disponiveis para emprestimo do Livro '%s'.\n", LivrosDisponiveis[indexLivro].nome);
+            printf("Nao a copias disponiveis para emprestimo do Livro '%s'.\n", LivrosDisponiveis[indexLivro].nome);
         }
     } else {
-        printf("Opção invalida .\n");
+        printf("Opcao invalida .\n");
     }
 }
 
@@ -149,7 +149,7 @@ struct Livro* inicializarCatalogo(int *quantidadeLivros) {
 
     struct Livro *lista = (struct Livro*)malloc((*quantidadeLivros) * sizeof(struct Livro));
     if (lista == NULL) {
-        printf("Erro ao alocar memória.\n");
+        printf("Erro ao alocar memoria.\n");
         exit(1);
     }
 
