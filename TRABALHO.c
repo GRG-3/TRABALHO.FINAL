@@ -66,7 +66,7 @@ void editarLivro(struct Livro lista[], int quantidadeLivros) {
         }
     }
 
-    printf("Livro não encontrado.\n");
+    printf("Livro nao encontrado.\n");
 }
 
 void removerLivro(struct Livro lista[], int *quantidadeLivros) {
@@ -91,36 +91,42 @@ void removerLivro(struct Livro lista[], int *quantidadeLivros) {
 void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
 
     struct Livro LivrosDisponiveis[10] = {
-        {"Arsene Lupin, Ladrao de Casaca", 5},
-        {"Dom Quixote, de Miguel de Cervantes", 8},
-        {"It", 3},
-        {"Diário de um Banana", 2},
-        {"O Pequeno Príncipe, de Antoine de Saint-Exupery", 7},
-        {"Harry Potter (série), de J.K. Rowling", 4},
-        {"Cinderela, Branca de Neve, e outros contos de fadas", 6},
-        {"Ela, a Feiticeira", 1},
-        {"O Livro dos Recordes (Guinness World Records)", 9},
-        {"Um Conto de Duas Cidades", 10}
-};
-     int escolha;
+        {"Arsene Lupin, Ladrao de Casaca", 15},
+        {"Dom Quixote", 8},
+        {"It", 12},
+        {"Diario de um Banana", 20},
+        {"O Pequeno Principe", 22},
+        {"Harry Potter (serie)", 4},
+        {"Cinderela", 17},
+        {"Ela, a Feiticeira", 9},
+        {"Orgulho e Preconceito", 19},
+        {"Um Conto de Duas Cidades", 32}
+    };
+
+   printf("Lista de Livros disponiveis para emprestimo:\n");
+    for (int i = 0; i < quantidadeLivros; i++) {
+        printf("%d. %s (Quantidade Disponivel: %d)\n", i + 1, lista[i].nome, lista[i].quantidade);
+    }
+
+    int escolha;
     printf("Escolha o numero do Livro a ser emprestado: ");
     scanf("%d", &escolha);
 
-    if (escolha >= 1 && escolha <= 10) {
+     if (escolha >= 1 && escolha <= quantidadeLivros) {
         int indexLivro = escolha - 1;
         if (LivrosDisponiveis[indexLivro].quantidade > 0) {
             int quantidadeDesejada;
             printf("Digite a quantidade desejada: ");
             scanf("%d", &quantidadeDesejada);
 
-            if (quantidadeDesejada <= LivrosDisponiveis[indexLivro].quantidade) {
-                LivrosDisponiveis[indexLivro].quantidade -= quantidadeDesejada;
-                printf("%d unidades do Livro '%s' emprestadas com sucesso.\n", quantidadeDesejada, LivrosDisponiveis[indexLivro].nome);
+            if (quantidadeDesejada <= lista[indexLivro].quantidade) {
+                lista[indexLivro].quantidade -= quantidadeDesejada;
+                printf("%d unidades do Livro '%s' emprestadas com sucesso.\n",  quantidadeDesejada, lista[indexLivro].nome);
             } else {
-                printf("Nao a quantidade suficiente disponivel para emprestimo do Livro '%s'.\n", LivrosDisponiveis[indexLivro].nome);
+                printf("Nao a quantidade suficiente disponivel para emprestimo do Livro '%s'.\n", lista[indexLivro].nome);
             }
         } else {
-            printf("Nao a copias disponiveis para emprestimo do Livro '%s'.\n", LivrosDisponiveis[indexLivro].nome);
+            printf("Nao a copias disponiveis para emprestimo do Livro '%s'.\n", lista[indexLivro].nome);
         }
     } else {
         printf("Opcao invalida .\n");
@@ -145,7 +151,7 @@ void salvarLista(struct Livro lista[], int quantidadeLivros) {
 }
 
 struct Livro* inicializarCatalogo(int *quantidadeLivros) {
-    *quantidadeLivros = 3;
+    *quantidadeLivros = 0;
 
     struct Livro *lista = (struct Livro*)malloc((*quantidadeLivros) * sizeof(struct Livro));
     if (lista == NULL) {
@@ -153,8 +159,8 @@ struct Livro* inicializarCatalogo(int *quantidadeLivros) {
         exit(1);
     }
 
-    for (int i = 0; i < *quantidadeLivros; i++) {
-        strcpy(lista[i].nome, "LivroExemplo");
+     for (int i = 0; i < *quantidadeLivros; i++) {
+        snprintf(lista[i].nome, sizeof(lista[i].nome), "Livro %d", i + 1);
         lista[i].quantidade = 10;
     }
 
@@ -206,7 +212,7 @@ int main() {
                 printf("Saindo do programa.\n");
                 break;
             default:
-                printf("Opção invalida . Tente novamente.\n");
+                printf("opcao invalida . Tente novamente.\n");
         }
 
     } while (opcao != 0);
