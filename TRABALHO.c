@@ -154,3 +154,36 @@ void salvarLista(ListaLivros lista, const char *nomeArquivo) {
     fclose(arquivo);
     printf("\nLista de livros salva no arquivo '%s'.\n\n", nomeArquivo);
 }
+
+void emprestarLivro(ListaLivros *lista, ListaLivros *listaBiblioteca) {
+    printf("\nLivros disponiveis para emprestimo:\n");
+    for (int i = 0; i < listaBiblioteca->tamanho; i++) {
+        printf("%d. %s, por %s - Disponiveis: %d\n", i + 1, listaBiblioteca->livros[i].nome,
+               listaBiblioteca->livros[i].autor, listaBiblioteca->livros[i].quantidade);
+    }
+    int escolhaLivro;
+    printf("Escolha o livro que deseja pegar emprestado ('0' para voltar): ");
+    scanf("%d", &escolhaLivro);
+
+    if (escolhaLivro == 0) return;
+
+    if (escolhaLivro > 0 && escolhaLivro <= listaBiblioteca->tamanho) {
+        char nome[100], autor[100];
+        int quantidade;
+
+        strcpy(nome, listaBiblioteca->livros[escolhaLivro - 1].nome);
+        strcpy(autor, listaBiblioteca->livros[escolhaLivro - 1].autor);
+
+        printf("Quantos livros deseja pegar emprestado? ");
+        scanf("%d", &quantidade);
+
+        if (quantidade <= listaBiblioteca->livros[escolhaLivro - 1].quantidade) {
+            adicionarLivro(lista, nome, autor, quantidade);
+            listaBiblioteca->livros[escolhaLivro - 1].quantidade -= quantidade;
+        } else {
+            printf("\nNao ha livros suficientes para emprestar.\n\n");
+        }
+    } else {
+        printf("\nLivro nao encontrado.\n\n");
+    }
+}
