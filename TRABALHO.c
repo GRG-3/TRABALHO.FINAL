@@ -20,6 +20,16 @@ ListaLivros criarLista() {
     return lista;
 }
 
+void adicionarLivro(ListaLivros *lista, char nome[], char autor[], int quantidade) {
+    lista->tamanho++;
+    lista->livros = realloc(lista->livros, lista->tamanho * sizeof(Livro));
+    Livro livro;
+    strcpy(livro.nome, nome);
+    strcpy(livro.autor, autor);
+    livro.quantidade = quantidade;
+    lista->livros[lista->tamanho - 1] = livro;
+    printf("\n\nLivro adicionado com sucesso.\n\n");
+}
 
 
 
