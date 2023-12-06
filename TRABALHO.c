@@ -17,9 +17,11 @@ void adicionarLivro(struct Livro lista[], int *quantidadeLivros) {
 
     printf("Digite a quantidade do Livro: ");
     scanf("%d", &lista[*quantidadeLivros].quantidade);
+    getchar();
 
     (*quantidadeLivros)++;
 }
+
 
 // Funcao para exibir a lista de livros
 void exibirLista(struct Livro lista[], int quantidadeLivros) {
