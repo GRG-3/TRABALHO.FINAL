@@ -1,8 +1,8 @@
-Visão geral
+**Visão geral**
 
 O nosso projeto é um programa C que facilita o gerenciamento de listas de livros. Ele permite aos usuários criar, editar, excluir e exibir listas de livros. Além disso, os usuários podem pegar livros emprestados de uma biblioteca e salvar suas listas de livros em um arquivo.
 
-Características
+**Características**
 
 Criar listas: O programa permite aos usuários criar listas diferentes para seus livros.
 
@@ -18,13 +18,13 @@ Salvar lista em arquivo: Salva a lista de livros em um arquivo especificado.
 
 Emprestar Livro da Biblioteca: Emprestar livros de uma biblioteca, atualizando a lista de usuários e reduzindo a quantidade disponível da biblioteca.
 
-Para usar o programa, siga estas etapas:
+**Para usar o programa, siga estas etapas:**
 
 1. Compile o programa usando um compilador C (por exemplo, gcc LivroLista.c -o LivroLista).
 2. Execute o executável ( ./LivroLista).
 3. Siga as instruções na tela para interagir com o programa.
 
-Exemplos de uso
+**Exemplos de uso**
 
 Adicionando um livro:
 Para adicionar um livro à sua lista, selecione a opção “Adicionar livro”, insira os dados do livro (nome, autor, quantidade) e o livro será adicionado.
@@ -41,7 +41,7 @@ Escolha a opção “Pegar livro emprestado”, selecione um livro da biblioteca
 Salvando lista em arquivo:
 Selecione a opção "Salvar lista de livros", digite um nome de arquivo e sua lista será salva no arquivo especificado.
 
-*Considerações finais*
+**Considerações finais**
 
 O programa usa alocação dinâmica de memória para gerenciar a lista de livros.
 A validação de entrada não é implementada extensivamente, portanto espera-se que os usuários forneçam entradas válidas.
