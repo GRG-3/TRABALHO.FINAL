@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+// Estrutura para representar um livro
 struct Livro {
     char nome[50];
     int quantidade;
 };
 
+// Função para adicionar um livro na lista
 void adicionarLivro(struct Livro lista[], int *quantidadeLivros) {
     printf("Digite o nome do Livro: ");
     getchar(); 
