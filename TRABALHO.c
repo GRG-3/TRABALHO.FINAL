@@ -93,23 +93,9 @@ void removerLivro(struct Livro lista[], int *quantidadeLivros) {
     printf("Livro nao encontrado.\n");
 }
 
-// Funçao para emprestar um livro da lista de livros disponveis
+// Funçao para emprestar um livro da lista de livros disponíveis
 void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
-
-    struct Livro LivrosDisponiveis[10] = {
-        {"Arsene Lupin, Ladrao de Casaca", 15},
-        {"Dom Quixote", 8},
-        {"It", 12},
-        {"Diario de um Banana", 20},
-        {"O Pequeno Principe", 22},
-        {"Harry Potter (serie)", 4},
-        {"Cinderela", 17},
-        {"Ela, a Feiticeira", 9},
-        {"Orgulho e Preconceito", 19},
-        {"Um Conto de Duas Cidades", 32}
-    };
-
-   printf("Lista de Livros disponiveis para emprestimo:\n");
+    printf("Lista de Livros disponiveis para emprestimo:\n");
     for (int i = 0; i < quantidadeLivros; i++) {
         printf("%d. %s (Quantidade Disponivel: %d)\n", i + 1, lista[i].nome, lista[i].quantidade);
     }
@@ -118,24 +104,24 @@ void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
     printf("Escolha o numero do Livro a ser emprestado: ");
     scanf("%d", &escolha);
 
-     if (escolha >= 1 && escolha <= quantidadeLivros) {
+    if (escolha >= 1 && escolha <= quantidadeLivros) {
         int indexLivro = escolha - 1;
-        if (LivrosDisponiveis[indexLivro].quantidade > 0) {
+        if (lista[indexLivro].quantidade > 0) {
             int quantidadeDesejada;
             printf("Digite a quantidade desejada: ");
             scanf("%d", &quantidadeDesejada);
 
             if (quantidadeDesejada <= lista[indexLivro].quantidade) {
                 lista[indexLivro].quantidade -= quantidadeDesejada;
-                printf("%d unidades do Livro '%s' emprestadas com sucesso.\n",  quantidadeDesejada, lista[indexLivro].nome);
+                printf("%d unidades do Livro '%s' emprestadas com sucesso.\n", quantidadeDesejada, lista[indexLivro].nome);
             } else {
-                printf("Nao a quantidade suficiente disponivel para emprestimo do Livro '%s'.\n", lista[indexLivro].nome);
+                printf("Nao ha quantidade suficiente disponivel para emprestimo do Livro '%s'.\n", lista[indexLivro].nome);
             }
         } else {
-            printf("Nao a copias disponiveis para emprestimo do Livro '%s'.\n", lista[indexLivro].nome);
+            printf("Nao ha copias disponiveis para emprestimo do Livro '%s'.\n", lista[indexLivro].nome);
         }
     } else {
-        printf("Opcao invalida .\n");
+        printf("Opcao invalida.\n");
     }
 }
 
@@ -159,17 +145,12 @@ void salvarLista(struct Livro lista[], int quantidadeLivros) {
 
 // Inicializar a lista de livro
 struct Livro* inicializarCatalogo(int *quantidadeLivros) {
-    *quantidadeLivros = 10;
+    *quantidadeLivros = 0;
 
     struct Livro *lista = (struct Livro*)malloc((*quantidadeLivros) * sizeof(struct Livro));
     if (lista == NULL) {
         printf("Erro ao alocar memoria.\n");
         exit(1);
-    }
-
-     for (int i = 0; i < *quantidadeLivros; i++) {
-        snprintf(lista[i].nome, sizeof(lista[i].nome), "Livro %d", i + 1);
-        lista[i].quantidade = 10;
     }
 
     return lista;
@@ -182,7 +163,6 @@ int main() {
     int opcao;
 
     do {
-        // Menu de opções
         printf("Menu:\n");
         printf("1. Adicionar Livro\n");
         printf("2. Exibir Lista\n");
@@ -196,7 +176,6 @@ int main() {
         printf("Digite a opcao desejada: ");
         scanf("%d", &opcao);
 
-        // Switch para escolher a ação conforme a opçao escolhida
         switch (opcao) {
             case 1:
                 adicionarLivro(lista, &quantidadeLivros);
@@ -223,7 +202,7 @@ int main() {
                 printf("Saindo do programa.\n");
                 break;
             default:
-                printf("opcao invalida. Tente novamente.\n");
+                printf("Opcao invalida. Tente novamente.\n");
         }
 
     } while (opcao != 0);
