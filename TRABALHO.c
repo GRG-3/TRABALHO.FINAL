@@ -16,11 +16,14 @@ void adicionarLivro(struct Livro lista[], int *quantidadeLivros) {
     lista[*quantidadeLivros].nome[strcspn(lista[*quantidadeLivros].nome, "\n")] = '\0';
 
     printf("Digite a quantidade do Livro: ");
-    scanf("%d", &lista[*quantidadeLivros].quantidade);
-    getchar();
+    char quantidadeStr[10]; // String temporária para armazenar a quantidade
+    fgets(quantidadeStr, sizeof(quantidadeStr), stdin);
+    sscanf(quantidadeStr, "%d", &lista[*quantidadeLivros].quantidade);
 
     (*quantidadeLivros)++;
 }
+
+
 
 
 // Funcao para exibir a lista de livros
