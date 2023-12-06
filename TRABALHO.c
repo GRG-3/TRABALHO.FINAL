@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 typedef struct {
     char nome[100];
@@ -76,3 +77,80 @@ void listarLivros(ListaLivros lista) {
     printf("\n");
 }
 
+void apagarLivro(ListaLivros *lista) {
+    listarLivros(*lista);
+    int livroSelecionado;
+    printf("Digite o numero do livro que deseja apagar ('0' para voltar): ");
+    scanf("%d", &livroSelecionado);
+
+    if (livroSelecionado == 0) return;
+
+    if (livroSelecionado > 0 && livroSelecionado <= lista->tamanho) {
+        for (int i = livroSelecionado - 1; i < lista->tamanho - 1; i++) {
+            lista->livros[i] = lista->livros[i + 1];
+        }
+        lista->tamanho--;
+        lista->livros = realloc(lista->livros, lista->tamanho * sizeof(Livro));
+        printf("\nLivro removido com sucesso.\n\n");
+    } else {
+        printf("\nLivro nao encontrado.\n\n");
+    }
+}
+
+void editarLivro(ListaLivros *listas) {
+    printf("\nEscolha a lista (1 - Meus livros, 2 - Lista de desejos): ");
+    int listaSelecionada;
+    scanf("%d", &listaSelecionada);
+
+    if (listaSelecionada < 1 || listaSelecionada > 2) {
+        printf("\nLista invalida.\n");
+        return;
+    }
+
+    listarLivros(listas[listaSelecionada - 1]);
+
+    int livroSelecionado;
+    printf("Digite o numero do livro que deseja editar ('0' para voltar): ");
+    scanf("%d", &livroSelecionado);
+
+    if (livroSelecionado == 0) return;
+
+    if (livroSelecionado > 0 && livroSelecionado <= listas[listaSelecionada - 1].tamanho) {
+        char nome[100], autor[100];
+        int quantidade;
+
+        printf("\nDigite o novo nome do livro: ");
+        scanf(" %[^\n]", nome);
+
+        printf("Digite o novo autor do livro: ");
+        scanf(" %[^\n]", autor);
+
+        printf("Digite a nova quantidade de livros que possui: ");
+        scanf("%d", &quantidade);
+
+        strcpy(listas[listaSelecionada - 1].livros[livroSelecionado - 1].nome, nome);
+        strcpy(listas[listaSelecionada - 1].livros[livroSelecionado - 1].autor, autor);
+        listas[listaSelecionada - 1].livros[livroSelecionado - 1].quantidade = quantidade;
+
+        printf("\nLivro editado com sucesso.\n\n");
+    } else {
+        printf("\nLivro nao encontrado.\n\n");
+    }
+}
+
+void salvarLista(ListaLivros lista, const char *nomeArquivo) {
+    FILE *arquivo;
+    arquivo = fopen(nomeArquivo, "w");
+    if (arquivo == NULL) {
+        printf("\nErro ao criar o arquivo.\n\n");
+        return;
+    }
+    for (int i = 0; i < lista.tamanho; i++) {
+        fprintf(arquivo, "Livro %d:\n", i + 1);
+        fprintf(arquivo, "Nome: %s\n", lista.livros[i].nome);
+        fprintf(arquivo, "Autor: %s\n", lista.livros[i].autor);
+        fprintf(arquivo, "Quantidade: %d\n\n", lista.livros[i].quantidade);
+    }
+    fclose(arquivo);
+    printf("\nLista de livros salva no arquivo '%s'.\n\n", nomeArquivo);
+}
