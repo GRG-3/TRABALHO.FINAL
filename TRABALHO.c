@@ -66,6 +66,17 @@ void adicionarLivroLista(ListaLivros *lista, const char *titulo) {
     adicionarLivro(lista, nome, autor, quantidade);
 }
 
+void listarLivros(ListaLivros lista) {
+    if (lista.tamanho == 0) {
+        printf("\nNao ha livros nesta lista.\n\n");
+        return;
+    }
+    printf("\nLivros na lista:\n");
+    for (int i = 0; i < lista.tamanho; i++) {
+        printf("%d. %s, por %s\n", i + 1, lista.livros[i].nome, lista.livros[i].autor);
+    }
+    printf("\n");
+}
 
 // Funcao para buscar um livro na lista
 void buscarLivro(struct Livro lista[], int quantidadeLivros) {
