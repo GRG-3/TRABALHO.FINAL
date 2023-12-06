@@ -254,3 +254,11 @@ int main() {
                 printf("\nEssa opcao nao existe.\n");
                 break;
         }   
+          } while (opcao != 9);
+
+    free(meusLivros.livros);
+    free(listaDesejos.livros);
+    free(listaBiblioteca.livros);
+
+    return 0;
+}
