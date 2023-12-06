@@ -41,6 +41,7 @@ Escolha a opção “Pegar livro emprestado”, selecione um livro da biblioteca
 Salvando lista em arquivo:
 Selecione a opção "Salvar lista de livros", digite um nome de arquivo e sua lista será salva no arquivo especificado.
 
-Considerações finais:
+*Considerações finais*
+
 O programa usa alocação dinâmica de memória para gerenciar a lista de livros.
 A validação de entrada não é implementada extensivamente, portanto espera-se que os usuários forneçam entradas válidas.
