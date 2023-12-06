@@ -34,7 +34,7 @@ void adicionarLivro(ListaLivros *lista, char nome[], char autor[], int quantidad
 
 void exibirLivros(ListaLivros lista, const char *titulo) {
     if (lista.tamanho == 0) {
-        printf("\nVoce nao tem livros %s.\n\n", titulo);
+        printf("\nVoce nao tem livros adicionados.\n\n");
         return;
     }
     printf("\n%s:\n", titulo);
