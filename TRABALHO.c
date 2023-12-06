@@ -124,17 +124,17 @@ void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
             printf("Digite a quantidade desejada: ");
             scanf("%d", &quantidadeDesejada);
 
-            if (quantidadeDesejada <= lista[indexLivro].quantidade) {
-                lista[indexLivro].quantidade -= quantidadeDesejada;
-                printf("%d unidades do Livro '%s' emprestadas com sucesso.\n",  quantidadeDesejada, lista[indexLivro].nome);
+            if (quantidadeDesejada <= livrosDisponiveis[indexLivro].quantidade) {
+                livrosDisponiveis[indexLivro].quantidade -= quantidadeDesejada;
+                printf("%d unidades do Livro '%s' emprestadas com sucesso.\n", quantidadeDesejada, livrosDisponiveis[indexLivro].nome);
             } else {
-                printf("Nao a quantidade suficiente disponivel para emprestimo do Livro '%s'.\n", lista[indexLivro].nome);
+                printf("Nao ha quantidade suficiente disponivel para emprestimo do Livro '%s'.\n", livrosDisponiveis[indexLivro].nome);
             }
         } else {
-            printf("Nao a copias disponiveis para emprestimo do Livro '%s'.\n", lista[indexLivro].nome);
+            printf("Nao ha copias disponiveis para emprestimo do Livro '%s'.\n", livrosDisponiveis[indexLivro].nome);
         }
     } else {
-        printf("Opcao invalida .\n");
+        printf("Opcao invalida.\n");
     }
 }
 
