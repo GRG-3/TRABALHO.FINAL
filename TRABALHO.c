@@ -187,3 +187,28 @@ void emprestarLivro(ListaLivros *lista, ListaLivros *listaBiblioteca) {
         printf("\nLivro nao encontrado.\n\n");
     }
 }
+int main() {
+    ListaLivros meusLivros = criarLista();
+    ListaLivros listaDesejos = criarLista();
+    ListaLivros listaBiblioteca = criarLista();
+
+    adicionarLivro(&listaBiblioteca, "1984", "George Orwell", 5);
+    adicionarLivro(&listaBiblioteca, "Cem Anos de Solidao", "Gabriel Garcia Marquez", 8);
+    adicionarLivro(&listaBiblioteca, "O Pequeno Principe", "Antoine de Saint-Exupery", 12);
+
+    int opcao;
+
+    do {
+        printf("\nMenu:\n");
+        printf("1. Adicionar livro\n");
+        printf("2. Exibir meus livros\n");
+        printf("3. Adicionar livro a lista de desejos\n");
+        printf("4. Editar livro\n");
+        printf("5. Exibir lista de desejos\n");
+        printf("6. Apagar livro\n");
+        printf("7. Pegar livro emprestado\n");
+        printf("8. Salvar lista de livros\n");
+        printf("9. Sair\n");
+        printf("Escolha uma opcao: ");
+        scanf("%d", &opcao);
+    }
