@@ -223,7 +223,7 @@ int main() {
                 printf("Saindo do programa.\n");
                 break;
             default:
-                printf("opcao invalida . Tente novamente.\n");
+                printf("opcao invalida. Tente novamente.\n");
         }
 
     } while (opcao != 0);
