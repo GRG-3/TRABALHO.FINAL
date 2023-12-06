@@ -2,25 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Estrutura para representar um livro
-struct Livro {
-    char nome[50];
+typedef struct {
+    char nome[100];
+    char autor[100];
     int quantidade;
-};
+} Livro;
 
-// Funcao para adicionar um livro na lista
-void adicionarLivro(struct Livro lista[], int *quantidadeLivros) {
-    printf("Digite o nome do Livro: ");
-    getchar(); 
-    fgets(lista[*quantidadeLivros].nome, sizeof(lista[*quantidadeLivros].nome), stdin);
-    lista[*quantidadeLivros].nome[strcspn(lista[*quantidadeLivros].nome, "\n")] = '\0';
+typedef struct {
+    Livro *livros;
+    int tamanho;
+} ListaLivros;
 
-    printf("Digite a quantidade do Livro: ");
-    char quantidadeStr[10]; // String temporária para armazenar a quantidade
-    fgets(quantidadeStr, sizeof(quantidadeStr), stdin);
-    sscanf(quantidadeStr, "%d", &lista[*quantidadeLivros].quantidade);
-
-    (*quantidadeLivros)++;
+ListaLivros criarLista() {
+    ListaLivros lista;
+    lista.livros = NULL;
+    lista.tamanho = 0;
+    return lista;
 }
 
 
