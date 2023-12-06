@@ -33,15 +33,39 @@ void adicionarLivro(ListaLivros *lista, char nome[], char autor[], int quantidad
 
 
 
-// Funcao para exibir a lista de livros
-void exibirLista(struct Livro lista[], int quantidadeLivros) {
-    printf("\nLista de Livros:\n");
-    for (int i = 0; i < quantidadeLivros; i++) {
-        printf("Nome: %s, Quantidade: %d\n",
-               lista[i].nome, lista[i].quantidade);
+void exibirLivros(ListaLivros lista, const char *titulo) {
+    if (lista.tamanho == 0) {
+        printf("\nVoce nao tem livros %s.\n\n", titulo);
+        return;
     }
-    printf("\n");
+    printf("\n%s:\n", titulo);
+    for (int i = 0; i < lista.tamanho; i++) {
+        printf("Livro %d:\n", i + 1);
+        printf("Nome: %s\n", lista.livros[i].nome);
+        printf("Autor: %s\n", lista.livros[i].autor);
+        printf("Quantidade: %d\n", lista.livros[i].quantidade);
+    }
+    printf("\n\n");
 }
+
+void adicionarLivroLista(ListaLivros *lista, const char *titulo) {
+    char nome[100], autor[100];
+    int quantidade;
+
+    printf("\nDigite o nome do livro para adicionar a lista de %s ('0' para voltar): ", titulo);
+    scanf(" %[^\n]", nome);
+
+    if (nome[0] == '0') return;
+
+    printf("Digite o autor do livro: ");
+    scanf(" %[^\n]", autor);
+
+    printf("Digite a quantidade de livros que possui: ");
+    scanf("%d", &quantidade);
+
+    adicionarLivro(lista, nome, autor, quantidade);
+}
+
 
 // Funcao para buscar um livro na lista
 void buscarLivro(struct Livro lista[], int quantidadeLivros) {
