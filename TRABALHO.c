@@ -211,7 +211,6 @@ int main() {
         printf("9. Sair\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
-    }
         
     switch (opcao) {
             case 1:
