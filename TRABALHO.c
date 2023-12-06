@@ -159,7 +159,7 @@ void salvarLista(struct Livro lista[], int quantidadeLivros) {
 
 // Inicializar a lista de livro
 struct Livro* inicializarCatalogo(int *quantidadeLivros) {
-    *quantidadeLivros = 0;
+    *quantidadeLivros = 10;
 
     struct Livro *lista = (struct Livro*)malloc((*quantidadeLivros) * sizeof(struct Livro));
     if (lista == NULL) {
