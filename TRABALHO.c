@@ -212,3 +212,45 @@ int main() {
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
     }
+        
+    switch (opcao) {
+            case 1:
+                adicionarLivroLista(&meusLivros, "Meus livros");
+                break;
+            case 2:
+                exibirLivros(meusLivros, "Meus livros");
+                break;
+            case 3:
+                adicionarLivroLista(&listaDesejos, "Lista de desejos");
+                break;
+            case 4:
+                editarLivro((ListaLivros[]){meusLivros, listaDesejos});
+                break;
+            case 5:
+                exibirLivros(listaDesejos, "Lista de desejos");
+                break;
+            case 6:
+                printf("\nEscolha a lista (1 - Meus livros, 2 - Lista de desejos): ");
+                int listaSelecionada;
+                scanf("%d", &listaSelecionada);
+                if (listaSelecionada == 1) {
+                    apagarLivro(&meusLivros);
+                } else if (listaSelecionada == 2) {
+                    apagarLivro(&listaDesejos);
+                } else {
+                    printf("\nLista invalida.\n");
+                }
+                break;
+            case 7:
+                emprestarLivro(&meusLivros, &listaBiblioteca);
+                break;
+            case 8:
+                salvarLista(meusLivros, "Lista_de_livros.txt");
+                break;
+            case 9:
+                printf("\nObrigado por utilizar o programa. Volte sempre!\n\n");
+                break;
+            default:
+                printf("\nEssa opcao nao existe.\n");
+                break;
+        }   
