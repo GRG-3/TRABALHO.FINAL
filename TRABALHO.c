@@ -8,7 +8,7 @@ struct Livro {
     int quantidade;
 };
 
-// Função para adicionar um livro na lista
+// Funçao para adicionar um livro na lista
 void adicionarLivro(struct Livro lista[], int *quantidadeLivros) {
     printf("Digite o nome do Livro: ");
     getchar(); 
@@ -21,6 +21,7 @@ void adicionarLivro(struct Livro lista[], int *quantidadeLivros) {
     (*quantidadeLivros)++;
 }
 
+// Funçao para exibir a lista de livros
 void exibirLista(struct Livro lista[], int quantidadeLivros) {
     printf("\nLista de Livros:\n");
     for (int i = 0; i < quantidadeLivros; i++) {
@@ -30,6 +31,7 @@ void exibirLista(struct Livro lista[], int quantidadeLivros) {
     printf("\n");
 }
 
+// Funçao para buscar um livro na lista
 void buscarLivro(struct Livro lista[], int quantidadeLivros) {
     char nomeBusca[50];
     getchar();
@@ -49,6 +51,7 @@ void buscarLivro(struct Livro lista[], int quantidadeLivros) {
     printf("Livro nao encontrado.\n");
 }
 
+// Funçao para editar a quantidade de um livro na lista
 void editarLivro(struct Livro lista[], int quantidadeLivros) {
     char nomeEdicao[50];
     getchar();
@@ -70,6 +73,7 @@ void editarLivro(struct Livro lista[], int quantidadeLivros) {
     printf("Livro nao encontrado.\n");
 }
 
+// Funçao para remover um livro da lista
 void removerLivro(struct Livro lista[], int *quantidadeLivros) {
     char nomeRemocao[50];
     getchar();
@@ -89,6 +93,7 @@ void removerLivro(struct Livro lista[], int *quantidadeLivros) {
     printf("Livro nao encontrado.\n");
 }
 
+// Funçao para emprestar um livro da lista de livros disponveis
 void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
 
     struct Livro LivrosDisponiveis[10] = {
@@ -134,6 +139,7 @@ void emprestarLivro(struct Livro lista[], int quantidadeLivros) {
     }
 }
 
+// Funçao para salvar a lista de livros em um arquivo
 void salvarLista(struct Livro lista[], int quantidadeLivros) {
     FILE *arquivo;
     arquivo = fopen("lista_Livros.txt", "w");
@@ -151,6 +157,7 @@ void salvarLista(struct Livro lista[], int quantidadeLivros) {
     printf("Lista de Livros salva com sucesso.\n");
 }
 
+// Inicializar a lista de livro
 struct Livro* inicializarCatalogo(int *quantidadeLivros) {
     *quantidadeLivros = 0;
 
@@ -168,12 +175,14 @@ struct Livro* inicializarCatalogo(int *quantidadeLivros) {
     return lista;
 }
 
+// Funçao principal
 int main() {
     int quantidadeLivros;
     struct Livro *lista = inicializarCatalogo(&quantidadeLivros);
     int opcao;
 
     do {
+        // Menu de opções
         printf("Menu:\n");
         printf("1. Adicionar Livro\n");
         printf("2. Exibir Lista\n");
@@ -187,6 +196,7 @@ int main() {
         printf("Digite a opcao desejada: ");
         scanf("%d", &opcao);
 
+        // Switch para escolher a ação conforme a opçao escolhida
         switch (opcao) {
             case 1:
                 adicionarLivro(lista, &quantidadeLivros);
