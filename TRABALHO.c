@@ -59,7 +59,7 @@ void adicionarLivroLista(ListaLivros *lista, const char *titulo) {
     printf("Digite o autor do livro: ");
     scanf(" %[^\n]", autor);
 
-    printf("Digite a quantidade de livros que possui: ");
+    printf("Digite a quantidade de livros que deseja: ");
     scanf("%d", &quantidade);
 
     adicionarLivro(lista, nome, autor, quantidade);
@@ -125,7 +125,7 @@ void editarLivro(ListaLivros *listas) {
         printf("Digite o novo autor do livro: ");
         scanf(" %[^\n]", autor);
 
-        printf("Digite a nova quantidade de livros que possui: ");
+        printf("Digite a nova quantidade de livros que deseja: ");
         scanf("%d", &quantidade);
 
         strcpy(listas[listaSelecionada - 1].livros[livroSelecionado - 1].nome, nome);
