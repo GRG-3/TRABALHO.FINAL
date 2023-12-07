@@ -3,19 +3,20 @@
 #include <string.h>
 #include <time.h>
 
-
+// Definição de estrutura para representar um livro
 typedef struct {
     char nome[100];
     char autor[100];
     int quantidade;
 } Livro;
 
+// Estrutura para representar uma lista de livro
 typedef struct {
     Livro *livros;
     int tamanho;
 } ListaLivros;
 
-    // Função para criar uma lista de livros vazia.
+// Função para criar uma lista de livros vazia.
 ListaLivros criarLista() {
     ListaLivros lista;
     lista.livros = NULL;
