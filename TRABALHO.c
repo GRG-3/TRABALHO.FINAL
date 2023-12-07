@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 
+
 typedef struct {
     char nome[100];
     char autor[100];
@@ -14,6 +15,7 @@ typedef struct {
     int tamanho;
 } ListaLivros;
 
+    // Função para criar uma lista de livros vazia.
 ListaLivros criarLista() {
     ListaLivros lista;
     lista.livros = NULL;
@@ -21,22 +23,28 @@ ListaLivros criarLista() {
     return lista;
 }
 
-void adicionarLivro(ListaLivros *lista, char nome[], char autor[], int quantidade) {
+    // Função para adicionar um livro à lista
+    void adicionarLivro(ListaLivros *lista, char nome[], char autor[], int quantidade) {
     lista->tamanho++;
     lista->livros = realloc(lista->livros, lista->tamanho * sizeof(Livro));
     Livro livro;
+    // Copia os dados fornecidos para o livro temporario
     strcpy(livro.nome, nome);
     strcpy(livro.autor, autor);
     livro.quantidade = quantidade;
+    // Adiciona o livro à lista
     lista->livros[lista->tamanho - 1] = livro;
     printf("\n\nLivro adicionado com sucesso.\n\n");
 }
 
-void exibirLivros(ListaLivros lista, const char *titulo) {
+    // Funçao para exibir os livros de uma lista
+    void exibirLivros(ListaLivros lista, const char *titulo) {
+    // Verifica se a lista está vazia
     if (lista.tamanho == 0) {
         printf("\nVoce nao tem livros adicionados.\n\n");
         return;
     }
+    // Exibe o nome da lista
     printf("\n%s:\n", titulo);
     for (int i = 0; i < lista.tamanho; i++) {
         printf("Livro %d:\n", i + 1);
@@ -47,13 +55,16 @@ void exibirLivros(ListaLivros lista, const char *titulo) {
     printf("\n\n");
 }
 
-void adicionarLivroLista(ListaLivros *lista, const char *titulo) {
+    // Funçao para adicionar um livro a partir da estrada do usuario
+    void adicionarLivroLista(ListaLivros *lista, const char *titulo) {
     char nome[100], autor[100];
     int quantidade;
 
+    // Solicita os dados do livro
     printf("\nDigite o nome do livro para adicionar a lista de %s ('0' para voltar): ", titulo);
     scanf(" %[^\n]", nome);
 
+    // Verifica se o usuario deseja voltar
     if (nome[0] == '0') return;
 
     printf("Digite o autor do livro: ");
@@ -62,27 +73,32 @@ void adicionarLivroLista(ListaLivros *lista, const char *titulo) {
     printf("Digite a quantidade de livros que deseja: ");
     scanf("%d", &quantidade);
 
+    // Chama a função para adicionar o livro à lista
     adicionarLivro(lista, nome, autor, quantidade);
 }
 
-void listarLivros(ListaLivros lista) {
+    // Funçao para listar os livros de uma lista
+    void listarLivros(ListaLivros lista) {
+    // Verifica se a lista esta vazia
     if (lista.tamanho == 0) {
         printf("\nNao ha livros nesta lista.\n\n");
         return;
     }
+    // Exibe os livros na lista
     printf("\nLivros na lista:\n");
     for (int i = 0; i < lista.tamanho; i++) {
         printf("%d. %s, por %s\n", i + 1, lista.livros[i].nome, lista.livros[i].autor);
     }
     printf("\n");
 }
-
-void apagarLivro(ListaLivros *lista) {
+    // Funçao para apagar um livro de uma lista
+    void apagarLivro(ListaLivros *lista) {
     listarLivros(*lista);
     int livroSelecionado;
     printf("Digite o numero do livro que deseja apagar ('0' para voltar): ");
     scanf("%d", &livroSelecionado);
 
+    // Verifica se o usuario deseja voltar
     if (livroSelecionado == 0) return;
 
     if (livroSelecionado > 0 && livroSelecionado <= lista->tamanho) {
@@ -97,15 +113,21 @@ void apagarLivro(ListaLivros *lista) {
     }
 }
 
-void editarLivro(ListaLivros *listas) {
+    // Funçao para editar as informações de um livro
+
+    void editarLivro(ListaLivros *listas) {
     printf("\nEscolha a lista (1 - Meus livros, 2 - Lista de desejos): ");
     int listaSelecionada;
     scanf("%d", &listaSelecionada);
+
+    // Verifica se a lista escolhida é valida
 
     if (listaSelecionada < 1 || listaSelecionada > 2) {
         printf("\nLista invalida.\n");
         return;
     }
+
+    // Lista os livros da lista selecionada
 
     listarLivros(listas[listaSelecionada - 1]);
 
@@ -119,6 +141,7 @@ void editarLivro(ListaLivros *listas) {
         char nome[100], autor[100];
         int quantidade;
 
+        // Solicita ao usuario as novas infos do livro
         printf("\nDigite o novo nome do livro: ");
         scanf(" %[^\n]", nome);
 
@@ -138,13 +161,18 @@ void editarLivro(ListaLivros *listas) {
     }
 }
 
-void salvarLista(ListaLivros lista, const char *nomeArquivo) {
+    // Funçao para salvar a lista de livros em um arquivo
+
+    void salvarLista(ListaLivros lista, const char *nomeArquivo) {
     FILE *arquivo;
     arquivo = fopen(nomeArquivo, "w");
     if (arquivo == NULL) {
         printf("\nErro ao criar o arquivo.\n\n");
         return;
     }
+
+    // Escreva as informações dos livros no arquivo
+
     for (int i = 0; i < lista.tamanho; i++) {
         fprintf(arquivo, "Livro %d:\n", i + 1);
         fprintf(arquivo, "Nome: %s\n", lista.livros[i].nome);
@@ -155,7 +183,9 @@ void salvarLista(ListaLivros lista, const char *nomeArquivo) {
     printf("\nLista de livros salva no arquivo '%s'.\n\n", nomeArquivo);
 }
 
-void emprestarLivro(ListaLivros *lista, ListaLivros *listaBiblioteca) {
+    // Funçao de emprestar um livro da biblioteca
+
+    void emprestarLivro(ListaLivros *lista, ListaLivros *listaBiblioteca) {
     printf("\nLivros disponiveis para emprestimo:\n");
     for (int i = 0; i < listaBiblioteca->tamanho; i++) {
         printf("%d. %s, por %s - Disponiveis: %d\n", i + 1, listaBiblioteca->livros[i].nome,
@@ -186,12 +216,14 @@ void emprestarLivro(ListaLivros *lista, ListaLivros *listaBiblioteca) {
     } else {
         printf("\nLivro nao encontrado.\n\n");
     }
-}
-int main() {
+}   
+    // Funçao principal
+    int main() {
     ListaLivros meusLivros = criarLista();
     ListaLivros listaDesejos = criarLista();
     ListaLivros listaBiblioteca = criarLista();
 
+    // Livros disponiveis na biblioteca
     adicionarLivro(&listaBiblioteca, "1984", "George Orwell", 5);
     adicionarLivro(&listaBiblioteca, "Cem Anos de Solidao", "Gabriel Garcia Marquez", 8);
     adicionarLivro(&listaBiblioteca, "O Pequeno Principe", "Antoine de Saint-Exupery", 12);
@@ -199,6 +231,7 @@ int main() {
     int opcao;
 
     do {
+        // Exibe o menu de opçoes
         printf("\nMenu:\n");
         printf("1. Adicionar livro\n");
         printf("2. Exibir meus livros\n");
@@ -212,6 +245,7 @@ int main() {
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
         
+    // Executa a opção escolhida pelos usuarios
     switch (opcao) {
             case 1:
                 adicionarLivroLista(&meusLivros, "Meus livros");
