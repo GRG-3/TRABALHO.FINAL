@@ -184,7 +184,7 @@ ListaLivros criarLista() {
     printf("\nLista de livros salva no arquivo '%s'.\n\n", nomeArquivo);
 }
 
-    // Funçao de emprestar um livro da biblioteca
+    // Funçao de emprestar um livro da biblioteca 
 
     void emprestarLivro(ListaLivros *lista, ListaLivros *listaBiblioteca) {
     printf("\nLivros disponiveis para emprestimo:\n");
@@ -224,7 +224,7 @@ ListaLivros criarLista() {
     ListaLivros listaDesejos = criarLista();
     ListaLivros listaBiblioteca = criarLista();
 
-    // Livros disponiveis na biblioteca
+    // Livros disponiveis para emprestimo
     adicionarLivro(&listaBiblioteca, "1984", "George Orwell", 5);
     adicionarLivro(&listaBiblioteca, "Cem Anos de Solidao", "Gabriel Garcia Marquez", 8);
     adicionarLivro(&listaBiblioteca, "O Pequeno Principe", "Antoine de Saint-Exupery", 12);
